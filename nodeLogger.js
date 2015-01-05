@@ -1,28 +1,23 @@
 'use strict';
 var colors = require('colors');
+var df = require('moment');
 
-var Logger = function(logLevel) {
-    colors.setTheme({
-        DEBUG: 'blue',
-        INFO: 'green',
-        WARN: 'yellow',
-        ERROR: 'red'
-    });
+var Logger = function() {
+
+    var config = {
+        logLevel: 'INFO',
+        colors: {
+            DEBUG: 'blue',
+            INFO: 'green',
+            WARN: 'yellow',
+            ERROR: 'red'
+        },
+        dateFormat: 'YYYYMMMDD:HH:MM:ss.SSS ZZ'
+    };
+
+    colors.setTheme(config.colors);
 
     var levels = ['DEBUG', 'INFO', 'WARN', 'ERROR'];
-    var curLevel = 'INFO'
-
-    var getLogLevel = function() {
-        return curLevel;
-    };
-
-    var setLogLevel = function(level) {
-        if (levels.indexOf(level.toUpperCase()) == -1) {
-            throw level + " is not a valid log level. Use [ERROR|WARN|INFO|DEBUG]";
-        } else {
-            curLevel = level.toUpperCase();
-        }
-    };
 
     var debug = function(message) {
         log('DEBUG', message);
@@ -41,12 +36,12 @@ var Logger = function(logLevel) {
     }
 
     var log = function(level, message) {
-        var TS = new Date();
-        if (levels.indexOf(level) >= levels.indexOf(curLevel)) {
+        var TS = moment(new Date());
+        if (levels.indexOf(level) >= levels.indexOf(config.logLevel)) {
             if (typeof message !== 'string') {
                 message = JSON.stringify(message);
             };
-            console.log((TS.toISOString() + ' [' + level + ']: ' + message)[level]);
+            console.log((TS.format(config.dateFormat) + ' [' + level + ']: ' + message)[level]);
         }
     }
 
@@ -54,8 +49,7 @@ var Logger = function(logLevel) {
         this.setLogLevel(logLevel);
 
     return {
-        setLogLevel: setLogLevel,
-        getLogLevel: getLogLevel,
+        config: config,
         debug: debug,
         info: info,
         warn: warn,
