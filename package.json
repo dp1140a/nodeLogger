@@ -1,6 +1,6 @@
 {
     "name": "nodeLogger",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "A Lightweight Configurable Colorable Console Logger",
     "author": {
         "name": "Dave Patton",
