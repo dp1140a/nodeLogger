@@ -1,0 +1,37 @@
+{
+    "name": "nodeLogger",
+    "version": "0.1.1",
+    "description": "A Lightweight Configurable Colorable Console Logger",
+    "author": {
+        "name": "Dave Patton",
+        "email": ""
+    },
+    "repository": "dp1140a/nodelogger",
+    "license": "MIT",
+    "main": "./nodelogger.js",
+    "files": [
+        "nodeLogger.js"
+    ],
+    "keywords": [
+        "nodelogger",
+        "console",
+        "logging"
+    ],
+    "dependencies": {
+        "colors": "^1.0.3"
+    },
+    "devDependencies": {
+        "grunt-bump": "0.0.16",
+        "grunt-cli": "^0.1.13",
+        "grunt-contrib-jshint": "^0.10.0",
+        "grunt-contrib-nodeunit": "^0.4.1",
+        "grunt-contrib-watch": "^0.6.1",
+        "grunt-mocha-cli": "^1.11.0",
+        "jshint-stylish": "^1.0.0",
+        "load-grunt-tasks": "^1.0.0",
+        "time-grunt": "^1.0.0"
+    },
+    "scripts": {
+        "test": "grunt"
+    }
+}
