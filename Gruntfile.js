@@ -14,14 +14,11 @@ module.exports = function(grunt) {
             },
             js: {
                 src: ['*.js']
-            },
-            test: {
-                src: ['test/**/*.js']
             }
         },
         mochacli: {
             options: {
-                reporter: 'nyan',
+                reporter: 'spec',
                 bail: true
             },
             all: ['test/*.js']

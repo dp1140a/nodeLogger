@@ -1,8 +1,8 @@
 'use strict';
 var colors = require('colors');
-var df = require('moment');
+var moment = require('moment'); //http://momentjs.com/docs/
 
-var Logger = function() {
+var Logger = (function() {
 
     var config = {
         logLevel: 'INFO',
@@ -12,49 +12,53 @@ var Logger = function() {
             WARN: 'yellow',
             ERROR: 'red'
         },
-        dateFormat: 'YYYYMMMDD:HH:MM:ss.SSS ZZ'
+        dateFormat: 'YYYY-MMM-DD:HH:mm:ss.SSS ZZ'
     };
 
-    colors.setTheme(config.colors);
+    var init = function() {
+        if (arguments[0]) {
+            for (var prop in arguments[0]) config[prop] = arguments[0][prop];
+        }
+
+        colors.setTheme(config.colors);
+    };
 
     var levels = ['DEBUG', 'INFO', 'WARN', 'ERROR'];
 
     var debug = function(message) {
         log('DEBUG', message);
-    }
+    };
 
     var info = function(message) {
         log('INFO', message);
-    }
+    };
 
     var warn = function(message) {
         log('WARN', message);
-    }
+    };
 
     var error = function(message) {
         log('ERROR', message);
-    }
+    };
 
     var log = function(level, message) {
-        var TS = moment(new Date());
         if (levels.indexOf(level) >= levels.indexOf(config.logLevel)) {
             if (typeof message !== 'string') {
                 message = JSON.stringify(message);
-            };
-            console.log((TS.format(config.dateFormat) + ' [' + level + ']: ' + message)[level]);
+            }
+            console.log((moment().format(config.dateFormat) + ' [' + level + ']: ' + message)[level]);
         }
-    }
-
-    if (logLevel != undefined)
-        this.setLogLevel(logLevel);
+    };
 
     return {
+        init: init,
         config: config,
         debug: debug,
         info: info,
         warn: warn,
         error: error
     };
-}
-
-module.exports = Logger();
+})();
+console.log(moment().format());
+Logger.init();
+module.exports = Logger;
