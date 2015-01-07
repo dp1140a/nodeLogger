@@ -69,7 +69,7 @@ describe('Module Tests', function() {
                     WARN: 'yellow',
                     ERROR: 'red'
                 },
-                dateFormat: 'YYYY/MM/DD - HH:mm:ss.SSS ZZ'
+                dateFormat: 'YYYY/MM/DD-HH:mm:ss.SSS ZZ'
             });
             write();
         });

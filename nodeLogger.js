@@ -12,7 +12,7 @@ var Logger = (function() {
             WARN: 'yellow',
             ERROR: 'red'
         },
-        dateFormat: 'YYYY-MMM-DD:HH:mm:ss.SSS ZZ'
+        dateFormat: 'DD/MMM/YYYY:HH:mm:ss.SSS ZZ'
     };
 
     var init = function() {
@@ -46,7 +46,12 @@ var Logger = (function() {
             if (typeof message !== 'string') {
                 message = JSON.stringify(message);
             }
-            console.log((moment().format(config.dateFormat) + ' [' + level + ']: ' + message)[level]);
+            var s = new Error().stack;
+            var sLine = s.split("\n")[4];
+            var lineNum = new RegExp(/([a-z]*\.js.*):*([^\)]){1}/).exec(sLine);
+            //var lineNum = sLine.match(/([a-z]*\.js.*):*([^\)]){1}/);
+            //console.log(lineNum instanceof Array);
+            console.log('[' + (moment().format(config.dateFormat) + '] [' + level + '] ' + lineNum[0] + ': ' + message)[level]);
         }
     };
 
@@ -59,6 +64,6 @@ var Logger = (function() {
         error: error
     };
 })();
-console.log(moment().format());
+
 Logger.init();
 module.exports = Logger;
