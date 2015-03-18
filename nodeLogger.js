@@ -1,5 +1,5 @@
 'use strict';
-var colors = require('colors');
+var colors = require('colors'); //http://www.codediesel.com/nodejs/adding-colors-to-your-node-js-console/
 var moment = require('moment'); //http://momentjs.com/docs/
 
 var Logger = (function() {
@@ -47,11 +47,11 @@ var Logger = (function() {
                 message = JSON.stringify(message);
             }
             var s = new Error().stack;
-            var sLine = s.split("\n")[4];
+            var sLine = s.split("\n")[3];
             var lineNum = new RegExp(/([a-z]*\.js.*):*([^\)]){1}/).exec(sLine);
             //var lineNum = sLine.match(/([a-z]*\.js.*):*([^\)]){1}/);
             //console.log(lineNum instanceof Array);
-            console.log('[' + (moment().format(config.dateFormat) + '] [' + level + '] ' + lineNum[0] + ': ' + message)[level]);
+            console.log((moment().format(config.dateFormat) + ' [' + level + '] ' + lineNum[0] + ': ' + message)[level]);
         }
     };
 
