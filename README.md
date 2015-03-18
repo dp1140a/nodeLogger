@@ -1,4 +1,4 @@
-#  [![Build Status](https://secure.travis-ci.org/dp1140a/nodelogger.png?branch=master)](http://travis-ci.org/dp1140a/nodelogger)
+#  nodelogger
 
 > A Lightweight Configurable Colorable Console Logger
 
@@ -9,16 +9,29 @@
 $ npm install --save nodelogger
 ```
 
+##Default Configs
+```js
+{
+	logLevel: 'INFO',
+    colors: {
+        DEBUG: 'blue',
+        INFO: 'green',
+        WARN: 'yellow',
+        ERROR: 'red'
+    },
+    dateFormat: 'DD/MMM/YYYY:HH:mm:ss.SSS ZZ'
+}
+```
 
 ## Usage
 
 ```js
-var nodelogger = require('nodelogger');
 
-nodelogger('Rainbow');
+var nodelogger = require('git+https://github.com/dp1140a/nodeLogger.git#master');
+
+log.init({config});
 ```
-
 
 ## License
 
-MIT © [Dave Patton]()
+Apache2 © [Dave Patton]()
