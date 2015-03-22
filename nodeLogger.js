@@ -17,7 +17,9 @@ var Logger = (function() {
 
     var init = function() {
         if (arguments[0]) {
-            for (var prop in arguments[0]) config[prop] = arguments[0][prop];
+            for (var prop in arguments[0]) {
+                config[prop] = arguments[0][prop];
+            }
         }
 
         colors.setTheme(config.colors);
@@ -55,13 +57,23 @@ var Logger = (function() {
         }
     };
 
+    var getLogLevel = function() {
+        return config.logLevel;
+    };
+
+    var getConfig = function() {
+        return config;
+    }
+
     return {
         init: init,
         config: config,
         debug: debug,
         info: info,
         warn: warn,
-        error: error
+        error: error,
+        getLogLevel: getLogLevel,
+        getConfig: getConfig
     };
 })();
 
