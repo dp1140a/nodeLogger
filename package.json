@@ -1,5 +1,5 @@
 {
-  "name": "nodeLogger",
+  "name": "nodelogger",
   "version": "1.0.0",
   "description": "A Lightweight Configurable Colorable Console Logger",
   "author": {
@@ -8,9 +8,9 @@
   },
   "repository": "dp1140a/nodeLogger",
   "license": "MIT",
-  "main": "./nodeLogger.js",
+  "main": "./nodelogger.js",
   "files": [
-    "nodeLogger.js"
+    "nodelogger.js"
   ],
   "keywords": [
     "nodelogger",
