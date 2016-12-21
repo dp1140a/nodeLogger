@@ -1,14 +1,14 @@
 {
   "name": "nodeLogger",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "A Lightweight Configurable Colorable Console Logger",
   "author": {
     "name": "Dave Patton",
     "email": ""
   },
-  "repository": "dp1140a/nodelogger",
+  "repository": "dp1140a/nodeLogger",
   "license": "MIT",
-  "main": "./nodelogger.js",
+  "main": "./nodeLogger.js",
   "files": [
     "nodeLogger.js"
   ],
