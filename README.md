@@ -9,7 +9,19 @@
 $ npm install --save nodelogger
 ```
 
-##Default Configs
+## Test
+
+This assumes you have mocha installed.  If you do not install mocha with
+```sh
+$ npm install -g mocha
+```
+Then to run the test simple call mocha from the root project folder
+```sh
+$ mocha
+```
+![test output](docs/img1.png)
+
+## Default Configs
 ```js
 {
 	logLevel: 'INFO',
@@ -30,8 +42,13 @@ $ npm install --save nodelogger
 var nodelogger = require('git+https://github.com/dp1140a/nodeLogger.git#master');
 
 log.init({config});
+log.debug(message);
+log.info(message);
+log.warn(message);
+log.error(message);
+
 ```
 
 ## License
 
-Apache2 © [Dave Patton]()
+MIT © [Dave Patton]()
